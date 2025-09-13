@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>মুক্তা জুয়েলারি</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background: #fdf6f9;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg,#d63384,#f06595);
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: .9;
+    }
+    nav {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: #d63384;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+    nav a:hover {
+      color: #111;
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: url('https://images.unsplash.com/photo-1617957749189-b8c8c48a7651') center/cover no-repeat;
+      color: white;
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,.4);
+    }
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .hero a {
+      background: #d63384;
+      padding: 12px 25px;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+    .hero a:hover {
+      background: #a61e63;
+    }
+    .products {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .products h3 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 40px;
+      color: #d63384;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 25px;
+    }
+    .card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,.08);
+      transition: .3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,.15);
+    }
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .card .info {
+      padding: 15px;
+      text-align: center;
+    }
+    .card .info h4 {
+      color: #d63384;
+      margin-bottom: 8px;
+    }
+    .card .info p {
+      margin-bottom: 10px;
+    }
+    .card .info a {
+      display: inline-block;
+      padding: 8px 18px;
+      background: #d63384;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: .9rem;
+      transition: .3s;
+    }
+    .card .info a:hover {
+      background: #a61e63;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #111;
+      color: #bbb;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body> 
+
+  <header>
+    <h1>মুক্তা জুয়েলারি</h1>
+    <p>ট্রেন্ডি ডিজাইন • সাশ্রয়ী দাম • প্রিমিয়াম কোয়ালিটি</p>
+  </header> 
+
+  <nav>
+    <a href="#">হোম</a>
+    <a href="#">পণ্য</a>
+    <a href="#">অর্ডার</a>
+    <a href="#">যোগাযোগ</a>
+  </nav> 
+
+  <section class="hero">
+    <h2>আপনার সৌন্দর্যের ঝলক হোক মুক্তার ছোঁয়ায়</h2>
+    <p>স্টাইলিশ ডিজাইনের জুয়েলারি – সীমিত অফার চলছে!</p>
+    <a href="#">এখনই অর্ডার করুন</a>
+  </section> 
+
+  <section class="products">
+    <h3>আমাদের পণ্য</h3>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1617957749189-b8c8c48a7651" alt="">
+        <div class="info">
+          <h4>মুক্তার লকেট</h4>
+          <p>৳২৫০</p>
+          <a href="#">অর্ডার</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600185365528-3d5f2530f031" alt="">
+        <div class="info">
+          <h4>গোল্ডেন ব্রেসলেট</h4>
+          <p>৳৩২০</p>
+          <a href="#">অর্ডার</a>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1617038260897-41d9130b98c6" alt="">
+        <div class="info">
+          <h4>স্টাইলিশ কানের দুল</h4>
+          <p>৳১৮০</p>
+          <a href="#">অর্ডার</a>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+  <footer>
+    © 2025 মুক্তা জুয়েলারি | ডিজাইন করেছেন আপনি 💖
+  </footer> 
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!--
+  Premium Jewellery & Watch Shop - Single-file GitHub Pages template
+  Usage:
+   1. Copy this file as `index.html` into your GitHub repository root (or replace existing index.html).
+   2. Create an `images/` folder in the repo and upload product images named like `j1.jpg`, `j2.jpg`, `w1.jpg`, etc. (see placeholders below).
+   3. If you want separate files, split <style> into css/style.css and <script> into js/main.js and update links.
+   4. For contact form, replace `YOUR_FORMSPREE_ENDPOINT` with your Formspree URL or use Google Forms / Netlify forms.
+-->
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Duocorner Jewellery & Watches</title>
+  <meta name="description" content="Premium jewellery sets and watches — Duocorner | Elegant designs, fast delivery." />
+  <link rel="icon" href="/favicon.ico" />
+
+  <style>
+    /* ====== Base & Utilities ====== */
+    :root{--accent:#b8860b;--dark:#111827;--muted:#6b7280;--card:#ffffff;--bg:#f6f7fb}
+    *{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;line-height:1.5;color:var(--dark);background:var(--bg)}a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+
+    /* ====== Header ====== */
+    header.site-header{background:#fff;border-bottom:1px solid #e6e7ee}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:46px;height:46px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ffb74d);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav.main-nav{display:flex;gap:18px;align-items:center}
+    .btn-primary{background:var(--accent);color:#fff;padding:10px 16px;border-radius:8px;font-weight:600}
+
+    /* ====== Hero ====== */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:48px 0}
+    .hero .lead{font-size:42px;font-weight:700;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 18px}
+    .hero .hero-card{background:linear-gradient(180deg,#fff,#fff);border-radius:12px;padding:18px;box-shadow:0 8px 30px rgba(15,23,42,0.08)}
+    .hero .hero-card img{width:100%;border-radius:8px}
+
+    /* ====== Products ====== */
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin:28px 0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:var(--card);border-radius:12px;padding:14px;box-shadow:0 6px 18px rgba(15,23,42,0.06);transition:transform .22s}
+    .card:hover{transform:translateY(-6px)}
+    .card img{width:100%;height:220px;object-fit:cover;border-radius:8px}
+    .card h3{margin:10px 0 6px;font-size:18px}
+    .price{font-weight:700;color:var(--accent)}
+    .tag{display:inline-block;background:#fff8e6;color:#8a5d00;padding:6px 8px;border-radius:6px;font-size:13px;margin-top:8px}
+
+    /* ====== Footer ====== */
+    footer.site-footer{margin-top:40px;background:#0f1724;color:#cbd5e1;padding:28px;border-radius:10px}
+    footer .footer-inner{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}
+
+    /* ====== Responsive ====== */
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.header-inner{padding:12px}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}.hero .lead{font-size:28px}.header-inner{gap:10px}.brand .text{display:none}}
+
+    /* ====== Utilities ====== */
+    .muted{color:var(--muted)}
+    .center{text-align:center}
+    .btn{display:inline-block;padding:10px 14px;border-radius:8px}
+
+    /* ====== Product modal ====== */
+    .overlay{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:20px}
+    .overlay.show{display:flex}
+    .modal{background:#fff;border-radius:12px;max-width:920px;width:100%;padding:18px}
+    .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .modal img{width:100%;border-radius:10px}
+    .close-x{background:#111827;color:#fff;padding:6px 10px;border-radius:8px}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">DC</div>
+        <div>
+          <div style="font-weight:700">Duocorner</div>
+          <div class="muted" style="font-size:13px">Jewellery & Watches</div>
+        </div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="#products">পণ্য</a>
+        <a href="#about">আমাদের সম্পর্কে</a>
+        <a href="#contact">যোগাযোগ</a>
+        <a class="btn-primary" href="#contact">এখনই অর্ডার</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <h1 class="lead">প্রিমিয়াম জুয়েলারি সেট ও স্টাইলিশ ওয়াচ — সরাসরি আপনার ঘরে</h1>
+        <p>সিলেক্টেড কোলেকশন, হাতে তৈরি ডিজাইন, এবং দ্রুত ডেলিভারি। কাস্টমাইজড সেটের জন্য যোগাযোগ করুন।</p>
+        <div style="display:flex;gap:12px;margin-top:18px">
+          <a class="btn btn-primary" href="#products">শপ করে দেখুন</a>
+          <a class="btn" href="#about">আমাদের সম্পর্কে</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <img src="images/hero-jewellery.jpg" alt="Premium jewellery" />
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+          <div>
+            <div style="font-weight:700">Best Seller</div>
+            <div class="muted" style="font-size:13px">Elegant Pearl Set</div>
+          </div>
+          <div class="price">৳3,250</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Products -->
+    <section id="products">
+      <div class="section-title">
+        <h2>নতুন কোলেকশন</h2>
+        <div class="muted">আপডেটেড পণ্যের তালিকা</div>
+      </div>
+
+      <div class="grid">
+        <!-- Product 1 - Jewellery -->
+        <article class="card" data-name="Elegant Pearl Set" data-price="3250" onclick="openModal(this)">
+          <img src="images/j1.jpg" alt="Elegant Pearl Set" />
+          <h3>Elegant Pearl Set</h3>
+          <div class="muted">Pearl necklace + earrings</div>
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+            <div class="price">৳3,250</div>
+            <div class="tag">জুয়েলারি সেট</div>
+          </div>
+        </article>
+
+        <!-- Product 2 - Jewellery -->
+        <article class="card" data-name="Royal Kundan Set" data-price="7800" onclick="openModal(this)">
+          <img src="images/j2.jpg" alt="Royal Kundan Set" />
+          <h3>Royal Kundan Set</h3>
+          <div class="muted">Traditional handcrafted Kundan</div>
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+            <div class="price">৳7,800</div>
+            <div class="tag">জুয়েলারি সেট</div>
+          </div>
+        </article>
+
+        <!-- Product 3 - Watch -->
+        <article class="card" data-name="Classic Leather Watch" data-price="4500" onclick="openModal(this)">
+          <img src="images/w1.jpg" alt="Classic Leather Watch" />
+          <h3>Classic Leather Watch</h3>
+          <div class="muted">Leather strap, water resistant</div>
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+            <div class="price">৳4,500</div>
+            <div class="tag">Watch</div>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="card" data-name="Minimal Gold Set" data-price="5200" onclick="openModal(this)">
+          <img src="images/j3.jpg" alt="Minimal Gold Set" />
+          <h3>Minimal Gold Set</h3>
+          <div class="muted">Simple & elegant</div>
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+            <div class="price">৳5,200</div>
+            <div class="tag">জুয়েলারি সেট</div>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="card" data-name="Steel Chrono Watch" data-price="8200" onclick="openModal(this)">
+          <img src="images/w2.jpg" alt="Steel Chrono Watch" />
+          <h3>Steel Chrono Watch</h3>
+          <div class="muted">Chronograph, stainless steel</div>
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+            <div class="price">৳8,200</div>
+            <div class="tag">Watch</div>
+          </div>
+        </article>
+
+        <!-- Product 6 -->
+        <article class="card" data-name="Bridal Heavy Set" data-price="15200" onclick="openModal(this)">
+          <img src="images/j4.jpg" alt="Bridal Heavy Set" />
+          <h3>Bridal Heavy Set</h3>
+          <div class="muted">Full bridal collection</div>
+          <div style="margin-top:10px;display:flex;justify-content:space-between;align-items:center">
+            <div class="price">৳15,200</div>
+            <div class="tag">জুয়েলারি সেট</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" style="margin-top:40px">
+      <div class="section-title">
+        <h2>আমাদের সম্পর্কে</h2>
+        <div class="muted">কেন Duocorner?</div>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+        <div style="flex:1;min-width:280px">
+          <p class="muted">Duocorner-এ আমরা কাস্টম ডিজাইন ও প্রিমিয়াম মানের জুয়েলারি সেট ও ওয়াচ সরবরাহ করি। প্রতিটি পণ্য যাচাই ও হাতে পরীক্ষা করা হয়। আপনার বিশেষ মুহূর্তের জন্য কাস্টমাইজড অপশনও পাওয়া যায়।</p>
+          <ul>
+            <li>হাই-কোয়ালিটি মেটেরিয়াল</li>
+            <li>কাস্টমাইজেশন উপলব্ধ</li>
+            <li>ফাস্ট শিপিং এবং নিরাপদ প্যাকেজিং</li>
+          </ul>
+        </div>
+        <div style="width:320px">
+          <img src="images/about.jpg" alt="About" style="width:100%;border-radius:10px;box-shadow:0 8px 30px rgba(15,23,42,0.06)" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="margin-top:40px">
+      <div class="section-title">
+        <h2>যোগাযোগ ও অর্ডার</h2>
+        <div class="muted">অর্ডার বা কাস্টম আর্ডারের জন্য ফর্ম ভরুন</div>
+      </div>
+
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <div style="flex:1;min-width:320px;background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.05)">
+          <!-- NOTE: Replace action with your Formspree endpoint or other form handler -->
+          <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
+            <div style="margin-bottom:12px">
+              <label>নাম</label><br />
+              <input name="name" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e7ee" />
+            </div>
+            <div style="margin-bottom:12px">
+              <label>মোবাইল/WhatsApp</label><br />
+              <input name="phone" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e7ee" />
+            </div>
+            <div style="margin-bottom:12px">
+              <label>মেসেজ / অর্ডার ডিটেইলস</label><br />
+              <textarea name="message" rows="4" style="width:100%;padding:10px;border-radius:8px;border:1px solid #e6e7ee"></textarea>
+            </div>
+            <button class="btn-primary" type="submit">পাঠিয়ে দিন</button>
+          </form>
+        </div>
+
+        <div style="flex:1;min-width:220px">
+          <div style="background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.05)">
+            <h4>ডেলিভারি এবং রিটার্ন</h4>
+            <p class="muted">দেশব্যাপী কুরিয়ার ডেলিভারি। রিটার্ন ৭ দিনের মধ্যে বিজ্ঞপনে গ্রাহকের ক্ষতি না থাকলে কার্যকর।</p>
+            <h4>যোগাযোগ</h4>
+            <p class="muted">Email: info@duocorner.com<br />WhatsApp: +8801XXXXXXXXX</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Duocorner</strong>
+        <div class="muted">Premium Jewellery & Watches</div>
+      </div>
+
+      <div class="muted">© 2025 Duocorner • All rights reserved</div>
+    </div>
+  </footer>
+
+  <!-- Product modal -->
+  <div id="overlay" class="overlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <div style="font-weight:700" id="mName">Product name</div>
+        <button class="close-x" onclick="closeModal()">Close</button>
+      </div>
+      <div class="modal-grid">
+        <div>
+          <img id="mImg" src="images/j1.jpg" alt="product" />
+        </div>
+        <div>
+          <div id="mDesc" class="muted">Product description here.</div>
+          <div style="margin-top:14px;font-size:22px;font-weight:700;color:var(--accent)" id="mPrice">৳0</div>
+          <div style="margin-top:18px">
+            <a href="#contact" class="btn-primary">অর্ডার রিকোয়েস্ট</a>
+            <button class="btn" style="margin-left:10px" onclick="addToWishlist()">❤ Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Small JS for modal & basic interactivity
+    function openModal(card){
+      var name = card.getAttribute('data-name') || card.querySelector('h3').innerText;
+      var price = card.getAttribute('data-price') || card.querySelector('.price').innerText;
+      var img = card.querySelector('img').src;
+      document.getElementById('mName').innerText = name;
+      document.getElementById('mPrice').innerText = (price.toString().indexOf('৳') === -1) ? '৳' + price : price;
+      document.getElementById('mImg').src = img;
+      document.getElementById('mDesc').innerText = card.querySelector('.muted').innerText || '';
+      document.getElementById('overlay').classList.add('show');
+    }
+    function closeModal(){document.getElementById('overlay').classList.remove('show')}
+    function addToWishlist(){alert('Added to wishlist (demo)')}
+
+    // Optional: handle form success (demo)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      // Let formspree handle it; show quick message
+      setTimeout(function(){
+        alert('ধন্যবাদ! আপনার মেসেজ পাঠানো হয়েছে। আমরা শীঘ্রই যোগাযোগ করব।')
+      }, 200);
+    });
+  </script>
+</body>
+</html>
